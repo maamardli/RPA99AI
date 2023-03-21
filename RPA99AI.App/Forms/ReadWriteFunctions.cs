@@ -50,22 +50,22 @@ namespace RPA99AI.App.Forms
             }
         }
 
-        internal static void PopulateComboBoxFromEnumsWithAttributes(Enum theEnum, ComboBox combobox)
-        {
-            var dictionary = new Dictionary<string, int>();
+        //internal static void PopulateComboBoxFromEnumsWithAttributes(Enum theEnum, ComboBox combobox)
+        //{
+        //    var dictionary = new Dictionary<string, int>();
 
-            foreach (var enumValue in Enum.GetValues(theEnum.GetType()))
-            {
-                var fi = theEnum.GetType().GetField(enumValue.ToString());
-                var da = (DescriptionAttribute)Attribute.GetCustomAttribute(fi, typeof(DescriptionAttribute));
-                dictionary.Add(da != null ? da.Description : enumValue.ToString(), (int)enumValue);
-            }
+        //    foreach (var enumValue in Enum.GetValues(theEnum.GetType()))
+        //    {
+        //        var fi = theEnum.GetType().GetField(enumValue.ToString());
+        //        var da = (DescriptionAttribute)Attribute.GetCustomAttribute(fi, typeof(DescriptionAttribute));
+        //        dictionary.Add(da != null ? da.Description : enumValue.ToString(), (int)enumValue);
+        //    }
 
-            // Bind the customer type combo box
-            combobox.DisplayMember = "Key";
-            combobox.ValueMember = "Value";
-            combobox.DataSource = new BindingSource(dictionary, null);
-        }
+        //    // Bind the customer type combo box
+        //    combobox.DisplayMember = "Key";
+        //    combobox.ValueMember = "Value";
+        //    combobox.DataSource = new BindingSource(dictionary, null);
+        //}
 
         internal static void OpenWebPage(string url)
         {

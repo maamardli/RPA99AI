@@ -1,4 +1,4 @@
-﻿namespace RPA2003II.App.Forms
+﻿namespace RPA99AI.App.Forms
 {
     partial class FrmQualities
     {
