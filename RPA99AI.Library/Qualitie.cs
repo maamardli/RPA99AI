@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace RPA99AI.Library
+﻿namespace RPA99AI.Library
 {
     public class Qualitie
     {
