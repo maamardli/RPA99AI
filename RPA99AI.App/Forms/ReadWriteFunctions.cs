@@ -1,12 +1,8 @@
 ﻿using RPA99AI.App.Properties;
 using RPA99AI.Library;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace RPA99AI.App.Forms

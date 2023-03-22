@@ -66,9 +66,9 @@ namespace RPA99AI.Library
 
         private static double GetD(double eta, double t, double t2) => t switch
         {
-            double _ when t >= 0.0 && t < t2  => 2.5 * eta,
-            double _ when t >= t2  && t < 3.0 => 2.5 * eta * Pow(t2 / t, 2.0 / 3.0),
-            double _ when t >= 3.0            => 2.5 * eta * Pow(t2 / 3.0, 2.0 / 3.0) * Pow(3.0 / t, 5.0 / 3.0),
+            double _ when t >= 0.0 && t < t2 => 2.5 * eta,
+            double _ when t >= t2 && t < 3.0 => 2.5 * eta * Pow(t2 / t, 2.0 / 3.0),
+            double _ when t >= 3.0 => 2.5 * eta * Pow(t2 / 3.0, 2.0 / 3.0) * Pow(3.0 / t, 5.0 / 3.0),
             _ => throw new ArgumentOutOfRangeException(nameof(t)),
         };
 
@@ -96,23 +96,23 @@ namespace RPA99AI.Library
             var criteria = (myOuvrage.Zone, myOuvrage.Importance, myOuvrage.Qualites[2].NonObserve, myOuvrage.Qualites[3].NonObserve);
             return criteria switch
             {
-                (Zone.ZoneI  , _                  , false, false) => myOuvrage.Hn <= 65.0,
-                (Zone.ZoneIIa, _                  , false, false) => myOuvrage.Hn <= 65.0,
-                (Zone.ZoneIIb, _                  , false, false) => myOuvrage.Hn <= 30.0,
-                (Zone.ZoneIII, _                  , false, false) => myOuvrage.Hn <= 30.0,
-                (Zone.ZoneI  , _                  , _    , _    ) => true,
-                (Zone.ZoneIIa, Importance.Groupe1A, _    , _    ) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIIa, Importance.Groupe1B, _    , _    ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIIa, Importance.Groupe2 , _    , _    ) => myOuvrage.Hn <= 23.0,
-                (Zone.ZoneIIa, Importance.Groupe3 , _    , _    ) => true,
-                (Zone.ZoneIIb, Importance.Groupe1A, _    , _    ) => myOuvrage.Hn <= 08.0,
-                (Zone.ZoneIIb, Importance.Groupe1B, _    , _    ) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIIb, Importance.Groupe2 , _    , _    ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIIb, Importance.Groupe3 , _    , _    ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIII, Importance.Groupe1A, _    , _    ) => myOuvrage.Hn <= 08.0,
-                (Zone.ZoneIII, Importance.Groupe1B, _    , _    ) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIII, Importance.Groupe2 , _    , _    ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIII, Importance.Groupe3 , _    , _    ) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneI, _, false, false) => myOuvrage.Hn <= 65.0,
+                (Zone.ZoneIIa, _, false, false) => myOuvrage.Hn <= 65.0,
+                (Zone.ZoneIIb, _, false, false) => myOuvrage.Hn <= 30.0,
+                (Zone.ZoneIII, _, false, false) => myOuvrage.Hn <= 30.0,
+                (Zone.ZoneI, _, _, _) => true,
+                (Zone.ZoneIIa, Importance.Groupe1A, _, _) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIIa, Importance.Groupe1B, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIIa, Importance.Groupe2, _, _) => myOuvrage.Hn <= 23.0,
+                (Zone.ZoneIIa, Importance.Groupe3, _, _) => true,
+                (Zone.ZoneIIb, Importance.Groupe1A, _, _) => myOuvrage.Hn <= 08.0,
+                (Zone.ZoneIIb, Importance.Groupe1B, _, _) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIIb, Importance.Groupe2, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIIb, Importance.Groupe3, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIII, Importance.Groupe1A, _, _) => myOuvrage.Hn <= 08.0,
+                (Zone.ZoneIII, Importance.Groupe1B, _, _) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIII, Importance.Groupe2, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIII, Importance.Groupe3, _, _) => myOuvrage.Hn <= 17.0,
                 _ => throw new ArgumentOutOfRangeException(nameof(myOuvrage)),
             };
         }

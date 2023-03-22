@@ -1,6 +1,4 @@
 ﻿using RPA99AI.Library;
-using System;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using static RPA99AI.App.Forms.ReadWriteFunctions;
 

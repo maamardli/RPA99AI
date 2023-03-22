@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using static RPA99AI.App.Forms.ReadWriteFunctions;
+﻿using static RPA99AI.App.Forms.ReadWriteFunctions;
 
 namespace RPA99AI.App.Forms
 {

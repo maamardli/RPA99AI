@@ -107,177 +107,73 @@
         private static double GetA(Ouvrage ouvrage)
         {
             var criteria = (ouvrage.Zone, ouvrage.Importance);
-            return criteria switch
-            {
-                (Zone.ZoneI, Importance.Groupe1A) => 0.15,
-                (Zone.ZoneI, Importance.Groupe1B) => 0.12,
-                (Zone.ZoneI, Importance.Groupe2) => 0.10,
-                (Zone.ZoneI, Importance.Groupe3) => 0.07,
-                (Zone.ZoneIIa, Importance.Groupe1A) => 0.25,
-                (Zone.ZoneIIa, Importance.Groupe1B) => 0.20,
-                (Zone.ZoneIIa, Importance.Groupe2) => 0.15,
-                (Zone.ZoneIIa, Importance.Groupe3) => 0.10,
-                (Zone.ZoneIIb, Importance.Groupe1A) => 0.30,
-                (Zone.ZoneIIb, Importance.Groupe1B) => 0.25,
-                (Zone.ZoneIIb, Importance.Groupe2) => 0.20,
-                (Zone.ZoneIIb, Importance.Groupe3) => 0.14,
-                (Zone.ZoneIII, Importance.Groupe1A) => 0.40,
-                (Zone.ZoneIII, Importance.Groupe1B) => 0.30,
-                (Zone.ZoneIII, Importance.Groupe2) => 0.25,
-                (Zone.ZoneIII, Importance.Groupe3) => 0.18,
-                _ => throw new NotImplementedException(),
-            };
+            return OuvrageHelpers.AValues.TryGetValue(criteria, out double value) ? value : throw new NotImplementedException();
         }
 
         private static double GetEta(double xi) => Math.Sqrt(7.0 / (xi + 2.0));
 
         private static double GetBeta(TypeOuvrage typesOuvrages)
         {
-            return typesOuvrages switch
+            if (OuvrageHelpers.BetaValues.TryGetValue(typesOuvrages, out var beta))
             {
-                TypeOuvrage.Cas1BatimentsHabitationBureaux => 0.20,
-                TypeOuvrage.Cas2ABatimentsRecevantPublicTemporairementSallesExposition => 0.30,
-                TypeOuvrage.Cas2BBatimentsRecevantPublicTemporairementSallesClasses => 0.40,
-                TypeOuvrage.Cas3EntrepotsHangars => 0.40,
-                TypeOuvrage.Cas4ArchivesBibliothequesReservoirs => 1.00,
-                TypeOuvrage.Cas5AutresLocaux => 0.60,
-                _ => throw new NotImplementedException(),
-            };
+                return beta;
+            }
+
+            throw new NotImplementedException();
         }
 
         private static double GetR(SystemeContreventement systemeContreventement)
         {
-            return systemeContreventement switch
+            if (OuvrageHelpers.RValues.TryGetValue(systemeContreventement, out double r))
             {
-                SystemeContreventement.A1A => 5.00,
-                SystemeContreventement.A1B => 3.50,
-                SystemeContreventement.A2 => 3.50,
-                SystemeContreventement.A3 => 3.50,
-                SystemeContreventement.A4A => 5.00,
-                SystemeContreventement.A4B => 4.00,
-                SystemeContreventement.A5 => 2.00,
-                SystemeContreventement.A6 => 2.00,
-                SystemeContreventement.B7 => 6.00,
-                SystemeContreventement.B8 => 4.00,
-                SystemeContreventement.B9A => 4.00,
-                SystemeContreventement.B9B => 3.00,
-                SystemeContreventement.B10A => 5.00,
-                SystemeContreventement.B10B => 4.00,
-                SystemeContreventement.B11 => 2.00,
-                SystemeContreventement.C12 => 2.50,
-                SystemeContreventement.D13 => 2.00,
-                SystemeContreventement.D14 => 3.00,
-                SystemeContreventement.D15 => 3.50,
-                SystemeContreventement.D16 => 4.00,
-                SystemeContreventement.D17 => 2.00,
-                _ => throw new NotImplementedException(),
-            };
+                return r;
+            }
+            throw new NotImplementedException();
         }
 
         private static double GetT2(Site site)
         {
-            return site switch
+            if (!OuvrageHelpers.T2Values.TryGetValue(site, out double value))
             {
-                Site.S1SiteRocheux => 0.30,
-                Site.S2SiteFerme => 0.40,
-                Site.S3SiteMeuble => 0.50,
-                Site.S4SiteTresMeuble => 0.70,
-                _ => throw new NotImplementedException(),
-            };
+                throw new NotImplementedException();
+            }
+            return value;
         }
 
         private static double GetT1(Site site)
         {
-            return site switch
+            if (OuvrageHelpers.T1Values.TryGetValue(site, out double value))
             {
-                Site.S1SiteRocheux => 0.15,
-                Site.S2SiteFerme => 0.15,
-                Site.S3SiteMeuble => 0.15,
-                Site.S4SiteTresMeuble => 0.15,
-                _ => throw new NotImplementedException(),
-            };
+                return value;
+            }
+
+            throw new NotImplementedException();
         }
 
         private static double GetXi(Materiau materiau)
         {
-            return materiau switch
+            if (OuvrageHelpers.XiValues.TryGetValue(materiau, out double value))
             {
-                Materiau.BetonLeger => 06.00,
-                Materiau.BetonDense => 07.00,
-                Materiau.AcierLeger => 04.00,
-                Materiau.AcierDense => 05.00,
-                Materiau.Voile => 10.00,
-                _ => throw new NotImplementedException(),
-            };
+                return value;
+            }
+
+            throw new NotImplementedException();
         }
+
 
         private static Zone GetZone(Ouvrage ouvrage)
         {
-            return ouvrage.DeclarationduZone switch
+            if (ouvrage.DeclarationduZone == DeclarationduZone.ParZone)
             {
-                DeclarationduZone.ParZone => ouvrage._zone,
-                DeclarationduZone.ParWilaya => ouvrage.Wilaya switch
-                {
-                    Wilaya.ChlefA => Zone.ZoneIII,
-                    Wilaya.ChlefB => Zone.ZoneIIb,
-                    Wilaya.ChlefC => Zone.ZoneIIa,
-                    Wilaya.Laghouat => Zone.ZoneI,
-                    Wilaya.OumElBouaghi => Zone.ZoneI,
-                    Wilaya.Batna => Zone.ZoneI,
-                    Wilaya.Bejaia => Zone.ZoneIIa,
-                    Wilaya.Biskra => Zone.ZoneI,
-                    Wilaya.BlidaA => Zone.ZoneIII,
-                    Wilaya.BlidaB => Zone.ZoneIIb,
-                    Wilaya.Bouira => Zone.ZoneIIa,
-                    Wilaya.Tebessa => Zone.ZoneI,
-                    Wilaya.Tlemcen => Zone.ZoneI,
-                    Wilaya.Tiaret => Zone.ZoneI,
-                    Wilaya.TiziOuzouA => Zone.ZoneIIb,
-                    Wilaya.TiziOuzouB => Zone.ZoneIIa,
-                    Wilaya.Alger => Zone.ZoneIII,
-                    Wilaya.Djelfa => Zone.ZoneI,
-                    Wilaya.Jijel => Zone.ZoneIIa,
-                    Wilaya.Setif => Zone.ZoneIIa,
-                    Wilaya.Saida => Zone.ZoneI,
-                    Wilaya.Skikda => Zone.ZoneIIa,
-                    Wilaya.SidiBelAbbes => Zone.ZoneI,
-                    Wilaya.Annaba => Zone.ZoneIIa,
-                    Wilaya.Guelma => Zone.ZoneIIa,
-                    Wilaya.Constantine => Zone.ZoneIIa,
-                    Wilaya.MedeaA => Zone.ZoneIIb,
-                    Wilaya.MedeaB => Zone.ZoneIIa,
-                    Wilaya.MedeaC => Zone.ZoneI,
-                    Wilaya.MostganemA => Zone.ZoneIII,
-                    Wilaya.MostganemB => Zone.ZoneIIb,
-                    Wilaya.MostganemC => Zone.ZoneIIa,
-                    Wilaya.MsilaA => Zone.ZoneIIa,
-                    Wilaya.MsilaB => Zone.ZoneI,
-                    Wilaya.MascaraA => Zone.ZoneIIa,
-                    Wilaya.MascareB => Zone.ZoneI,
-                    Wilaya.Oran => Zone.ZoneIIa,
-                    Wilaya.ElBayadh => Zone.ZoneI,
-                    Wilaya.BordjBouArreridj => Zone.ZoneIIa,
-                    Wilaya.BoumerdesA => Zone.ZoneIII,
-                    Wilaya.BoumerdesB => Zone.ZoneIIb,
-                    Wilaya.BoumerdesC => Zone.ZoneIIa,
-                    Wilaya.ElTaref => Zone.ZoneIIa,
-                    Wilaya.Tissemsilt => Zone.ZoneIIa,
-                    Wilaya.Khenchela => Zone.ZoneI,
-                    Wilaya.SoukAhras => Zone.ZoneI,
-                    Wilaya.Tipaza => Zone.ZoneIII,
-                    Wilaya.Mila => Zone.ZoneIIa,
-                    Wilaya.AinDeflaA => Zone.ZoneIII,
-                    Wilaya.AinDeflaB => Zone.ZoneIIb,
-                    Wilaya.AinDeflaC => Zone.ZoneIIa,
-                    Wilaya.Naama => Zone.ZoneI,
-                    Wilaya.AinTemouchent => Zone.ZoneIIa,
-                    Wilaya.RelizaneA => Zone.ZoneIII,
-                    Wilaya.RelizaneB => Zone.ZoneIIb,
-                    Wilaya.RelizaneC => Zone.ZoneIIa,
-                    _ => throw new NotImplementedException(),
-                },
-                _ => throw new NotImplementedException(),
-            };
+                return ouvrage._zone;
+            }
+
+            if (ouvrage.DeclarationduZone == DeclarationduZone.ParWilaya && OuvrageHelpers.WilayaZoneMap.TryGetValue(ouvrage.Wilaya, out var zone))
+            {
+                return zone;
+            }
+
+            throw new NotImplementedException();
         }
 
         #endregion
