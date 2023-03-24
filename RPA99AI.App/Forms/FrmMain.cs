@@ -30,7 +30,7 @@ namespace RPA99AI.App.Forms
         internal ChartArea ChartAreaSpectre { get; set; } = new ChartArea();
         internal Series SeriesSpectre { get; set; } = new Series();
 
-        internal Ouvrage MyOuvrage { get; } = new Ouvrage();
+        internal Building MyOuvrage { get; } = new Building();
 
         private FrmOptions _frmOption { get; set; }
         private FrmQualities _frmQualites { get; set; }

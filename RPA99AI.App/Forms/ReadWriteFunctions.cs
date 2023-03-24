@@ -199,15 +199,15 @@ namespace RPA99AI.App.Forms
 
         private static void FrmMainReadOptionsFromSettings(FrmMain frmMain)
         {
-            frmMain.MyOuvrage.DeclarationduZone = (DeclarationduZone)Settings.Default.FrmOptions_CmbDeclarationduZone_SelectedIndex;
+            frmMain.MyOuvrage.DeclarationduZone = (DeclarationOfTheZone)Settings.Default.FrmOptions_CmbDeclarationduZone_SelectedIndex;
             switch (frmMain.MyOuvrage.DeclarationduZone)
             {
-                case DeclarationduZone.ParZone:
+                case DeclarationOfTheZone.ByZone:
                     frmMain.CmbZone.Visible = true;
                     frmMain.CmbWilaya.Visible = false;
                     break;
 
-                case DeclarationduZone.ParWilaya:
+                case DeclarationOfTheZone.ByWilaya:
                     frmMain.CmbZone.Visible = false;
                     frmMain.CmbWilaya.Visible = true;
                     break;
@@ -317,17 +317,17 @@ namespace RPA99AI.App.Forms
             frmMain.MyOuvrage.Zone = (Zone)CheckSelectedIndex(frmMain.CmbZone.SelectedIndex);
             frmMain.MyOuvrage.Site = (Site)CheckSelectedIndex(frmMain.CmbSite.SelectedIndex);
             frmMain.MyOuvrage.Wilaya = (Wilaya)CheckSelectedIndex(frmMain.CmbWilaya.SelectedIndex);
-            frmMain.MyOuvrage.Materiau = (Materiau)CheckSelectedIndex(frmMain.CmbMateriau.SelectedIndex);
+            frmMain.MyOuvrage.Materiau = (Material)CheckSelectedIndex(frmMain.CmbMateriau.SelectedIndex);
             frmMain.MyOuvrage.Importance = (Importance)CheckSelectedIndex(frmMain.CmbImportance.SelectedIndex);
-            frmMain.MyOuvrage.SysContreventement = (SystemeContreventement)CheckSelectedIndex(frmMain.CmbSysContreventement.SelectedIndex);
+            frmMain.MyOuvrage.SysContreventement = (StructuralSystems)CheckSelectedIndex(frmMain.CmbSysContreventement.SelectedIndex);
 
             frmMain.MyOuvrage.Spectre.Duration = Settings.Default.FrmOptions_NumDuration_Value;
             frmMain.MyOuvrage.Spectre.Steps = (int)Math.Pow(10, Settings.Default.FrmOptions_NumPrecesion_Value);
 
-            frmMain.MyOuvrage.TypeOuvrage = (TypeOuvrage)CheckSelectedIndex(frmMain.CmbTypeOuvrage.SelectedIndex);
-            frmMain.MyOuvrage.Statique.SystemeContreventementStat = (SystemeContreventementStat)CheckSelectedIndex(frmMain.CmbSysContreventementStat.SelectedIndex);
-            frmMain.MyOuvrage.Statique.Empirique = (CalculeTEmpirique)CheckSelectedIndex(frmMain.CmbFormuleEmpirique.SelectedIndex);
-            frmMain.MyOuvrage.Statique.FormuleCalculeTStatique = (FormuleCalculeTStatique)CheckSelectedIndex(frmMain.CmbFormuleFond.SelectedIndex);
+            frmMain.MyOuvrage.TypeOuvrage = (BuildingType)CheckSelectedIndex(frmMain.CmbTypeOuvrage.SelectedIndex);
+            frmMain.MyOuvrage.EquivalentStaticMethod.SystemeContreventementStat = (ResistingSystem)CheckSelectedIndex(frmMain.CmbSysContreventementStat.SelectedIndex);
+            frmMain.MyOuvrage.EquivalentStaticMethod.Empiric = (MethodToCalculateTEmpiric)CheckSelectedIndex(frmMain.CmbFormuleEmpirique.SelectedIndex);
+            frmMain.MyOuvrage.EquivalentStaticMethod.FormulaCalculateTStatic = (FormulatoCalculateTStatic)CheckSelectedIndex(frmMain.CmbFormuleFond.SelectedIndex);
 
             frmMain.MyOuvrage.Xi = ReadFromTextBox(frmMain.TxtXiValeur);
             frmMain.MyOuvrage.R = ReadFromTextBox(frmMain.TxtRValeur);
@@ -344,7 +344,7 @@ namespace RPA99AI.App.Forms
             frmMain.MyOuvrage.Lx = ReadFromTextBox(frmMain.TxtLx);
             frmMain.MyOuvrage.Ly = ReadFromTextBox(frmMain.TxtLy);
 
-            frmMain.MyOuvrage.Statique.Delta = ReadFromTextBox(frmMain.TxtDelta);
+            frmMain.MyOuvrage.EquivalentStaticMethod.Delta = ReadFromTextBox(frmMain.TxtDelta);
         }
 
         private static void FrmMainOrgnizeComboBoxes(FrmMain frmMain)
@@ -399,18 +399,18 @@ namespace RPA99AI.App.Forms
         {
             var staticResultsText =
                 Resources.FrmMain_Value_W_Rquals + frmMain.MyOuvrage.W.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Tx_Equals + frmMain.MyOuvrage.Statique.Tx.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Ty_Equals + frmMain.MyOuvrage.Statique.Ty.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Dx_Equals + frmMain.MyOuvrage.Statique.Dx.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Dy_Equals + frmMain.MyOuvrage.Statique.Dy.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Vx_Equals + frmMain.MyOuvrage.Statique.Vx.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Vy_Equals + frmMain.MyOuvrage.Statique.Vy.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Vx08_Equals + frmMain.MyOuvrage.Statique.Vx08.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
-                Resources.FrmMain_Value_Vy08_Equals + frmMain.MyOuvrage.Statique.Vy08.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine;
+                Resources.FrmMain_Value_Tx_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Tx.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
+                Resources.FrmMain_Value_Ty_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Ty.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
+                Resources.FrmMain_Value_Dx_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Dx.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
+                Resources.FrmMain_Value_Dy_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Dy.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
+                Resources.FrmMain_Value_Vx_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Vx.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
+                Resources.FrmMain_Value_Vy_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Vy.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
+                Resources.FrmMain_Value_Vx08_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Vx08.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine +
+                Resources.FrmMain_Value_Vy08_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Vy08.ToString("F3", CultureInfo.CurrentCulture) + Environment.NewLine;
 
             frmMain.TxtStatiqueResults.Clear();
 
-            frmMain.TxtStatiqueResults.Text = frmMain.MyOuvrage.Statique.IsStatiqueApplicable
+            frmMain.TxtStatiqueResults.Text = frmMain.MyOuvrage.EquivalentStaticMethod.IsStaticApplicable
                 ? staticResultsText
                 : staticResultsText + Resources.FrmMain_Message_Statique_Equivalente_Methode_Cannot_Be_Used_Fr;
         }
@@ -425,7 +425,7 @@ namespace RPA99AI.App.Forms
             frmMain.StsXi.Text = Resources.FrmMain_Value_Xi_Equals + frmMain.MyOuvrage.Xi.ToString("F2", CultureInfo.CurrentCulture);
             frmMain.StsEta.Text = Resources.FrmMain_Value_Eta_Equals + frmMain.MyOuvrage.Eta.ToString("F3", CultureInfo.CurrentCulture);
             frmMain.StsBeta.Text = Resources.FrmMain_Value_Beta_Equals + frmMain.MyOuvrage.Beta.ToString("F2", CultureInfo.CurrentCulture);
-            frmMain.StsCt.Text = Resources.FrmMain_Value_Ct_Equals + frmMain.MyOuvrage.Statique.Ct.ToString("F3", CultureInfo.CurrentCulture);
+            frmMain.StsCt.Text = Resources.FrmMain_Value_Ct_Equals + frmMain.MyOuvrage.EquivalentStaticMethod.Ct.ToString("F3", CultureInfo.CurrentCulture);
         }
 
         internal static void FrmMainShowChartHint(FrmMain frmMain)
