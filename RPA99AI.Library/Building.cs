@@ -1,4 +1,6 @@
-﻿namespace RPA99AI.Library
+﻿using static BuildingHelpers;
+
+namespace RPA99AI.Library
 {
     public class Building
     {
@@ -79,7 +81,7 @@
         /// </summary>
         public double A
         {
-            get => IsACustomValue ? _a : BuildingHelpers.GetA(this);
+            get => IsACustomValue ? _a : GetA(this);
             set => _a = value;
         }
 
@@ -90,7 +92,7 @@
         /// </summary>
         public double Beta
         {
-            get => IsBetaCustomValue ? _beta : BuildingHelpers.GetBeta(TypeOuvrage);
+            get => IsBetaCustomValue ? _beta : GetBeta(TypeOuvrage);
             set => _beta = value;
         }
 
@@ -111,7 +113,7 @@
         /// </summary>
         public double R
         {
-            get => IsRCustomValue ? _r : BuildingHelpers.GetR(SysContreventement);
+            get => IsRCustomValue ? _r : GetR(SysContreventement);
             set => _r = value;
         }
 
@@ -121,7 +123,7 @@
         /// </summary>
         public double T1
         {
-            get => IsT1T2CustomValue ? _t1 : BuildingHelpers.GetT1(Site);
+            get => IsT1T2CustomValue ? _t1 : GetT1(Site);
             set => _t1 = value;
         }
         /// <summary>
@@ -129,7 +131,7 @@
         /// </summary>
         public double T2
         {
-            get => IsT1T2CustomValue ? _t2 : BuildingHelpers.GetT2(Site);
+            get => IsT1T2CustomValue ? _t2 : GetT2(Site);
             set => _t2 = value;
         }
 

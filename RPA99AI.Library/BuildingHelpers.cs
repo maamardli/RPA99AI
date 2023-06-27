@@ -2,7 +2,7 @@
 
 internal static class BuildingHelpers
 {
-    internal static readonly Dictionary<Wilaya, Zone> WilayaZoneMap = new Dictionary<Wilaya, Zone>
+    internal static readonly Dictionary<Wilaya, Zone> WilayaZoneMap = new()
     {
         {Wilaya.ChlefA          , Zone.ZoneIII_HighSeismicity       },
         {Wilaya.ChlefB          , Zone.ZoneIIb_ModerateSeismicity   },
@@ -108,14 +108,14 @@ internal static class BuildingHelpers
     };
 
 
-    internal static readonly Dictionary<BuildingType, double> BetaValues = new Dictionary<BuildingType, double>
-        {
-            {BuildingType.Case1_ResidentialOfficesBuildings,0.20},
-            {BuildingType.Case2A_BuildingReceivingPublicTemporarilyRoomsOfExhibition,0.30},
-            {BuildingType.Case2B_BuildingReceivingPublicTemporarilyClassrooms,0.40},
-            {BuildingType.Case3_WarehousesHangars, 0.40 },
-            {BuildingType.Case4_ArchivesLibrariesTanks, 1.00 },
-            {BuildingType.Case5_OtherBuildings, 0.60 }
+    internal static readonly Dictionary<BuildingType, double> BetaValues = new()
+    {
+            {BuildingType.Case1_ResidentialOfficesBuildings                         , 0.20},
+            {BuildingType.Case2A_BuildingReceivingPublicTemporarilyRoomsOfExhibition, 0.30},
+            {BuildingType.Case2B_BuildingReceivingPublicTemporarilyClassrooms       , 0.40},
+            {BuildingType.Case3_WarehousesHangars                                   , 0.40},
+            {BuildingType.Case4_ArchivesLibrariesTanks                              , 1.00},
+            {BuildingType.Case5_OtherBuildings                                      , 0.60}
         };
 
 
@@ -151,7 +151,7 @@ internal static class BuildingHelpers
     internal static double GetA(Building ouvrage)
     {
         var criteria = (ouvrage.Zone, ouvrage.Importance);
-        return BuildingHelpers.AValues.TryGetValue(criteria, out double value) ? value : throw new NotImplementedException();
+        return AValues.TryGetValue(criteria, out double value) ? value : throw new NotImplementedException();
     }
 
     /// <summary>
@@ -174,55 +174,32 @@ internal static class BuildingHelpers
 
     internal static double GetR(StructuralSystems systemeContreventement)
     {
-        if (BuildingHelpers.RValues.TryGetValue(systemeContreventement, out double r))
-        {
-            return r;
-        }
-        throw new NotImplementedException();
+        return RValues.TryGetValue(systemeContreventement, out double r) ? r : throw new NotImplementedException();
     }
 
     internal static double GetT1(Site site)
     {
-        if (BuildingHelpers.T1Values.TryGetValue(site, out double value))
-        {
-            return value;
-        }
-
-        throw new NotImplementedException();
+        return T1Values.TryGetValue(site, out double value) ? value : throw new NotImplementedException();
     }
 
     internal static double GetT2(Site site)
     {
-        if (!BuildingHelpers.T2Values.TryGetValue(site, out double value))
-        {
-            throw new NotImplementedException();
-        }
-        return value;
+        return T2Values.TryGetValue(site, out double value) ? value : throw new NotImplementedException();
     }
 
     internal static double GetXi(Material materiau)
     {
-        if (BuildingHelpers.XiValues.TryGetValue(materiau, out double value))
-        {
-            return value;
-        }
-
-        throw new NotImplementedException();
+        return XiValues.TryGetValue(materiau, out double value) ? value : throw new NotImplementedException();
     }
 
 
     internal static Zone GetZone(Building ouvrage)
     {
-        if (ouvrage.DeclarationduZone == DeclarationOfTheZone.ByZone)
+        return ouvrage.DeclarationduZone switch
         {
-            return ouvrage._zone;
-        }
-
-        if (ouvrage.DeclarationduZone == DeclarationOfTheZone.ByWilaya && BuildingHelpers.WilayaZoneMap.TryGetValue(ouvrage.Wilaya, out var zone))
-        {
-            return zone;
-        }
-
-        throw new NotImplementedException();
+            DeclarationOfTheZone.ByZone => ouvrage._zone,
+            DeclarationOfTheZone.ByWilaya when WilayaZoneMap.TryGetValue(ouvrage.Wilaya, out var zone) => zone,
+            _ => throw new NotImplementedException(),
+        };
     }
 }

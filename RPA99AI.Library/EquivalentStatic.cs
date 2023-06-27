@@ -1,5 +1,4 @@
 ﻿using static System.Math;
-
 namespace RPA99AI.Library
 {
     /// <summary>
@@ -93,31 +92,31 @@ namespace RPA99AI.Library
         /// <summary>
         ///  Estimation of the fundamental period of the structure
         /// </summary>
-        /// <param name="myOuvrage"></param>
+        /// <param name="myBuilding"></param>
         /// <param name="l"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        private static double GetT(Building myOuvrage, double l)
+        private static double GetT(Building myBuilding, double l)
         {
-            if (myOuvrage is null)
+            if (myBuilding is null)
             {
-                throw new ArgumentNullException(nameof(myOuvrage));
+                throw new ArgumentNullException(nameof(myBuilding));
             }
 
-            var criteria = (myOuvrage.EquivalentStaticMethod.FormulaCalculateTStatic, myOuvrage.EquivalentStaticMethod.SystemeContreventementStat, myOuvrage.EquivalentStaticMethod.Empiric);
+            var criteria = (myBuilding.EquivalentStaticMethod.FormulaCalculateTStatic, myBuilding.EquivalentStaticMethod.SystemeContreventementStat, myBuilding.EquivalentStaticMethod.Empiric);
             return criteria switch
             {
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case1_ConcreteMomentResistingFramesWithoutInFilled, _) => GetEmp1(myOuvrage.Hn, myOuvrage.EquivalentStaticMethod.Ct),
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case2_SteelMomentResistingFramesWIthoutInFilled, _) => GetEmp1(myOuvrage.Hn, myOuvrage.EquivalentStaticMethod.Ct),
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case3_SteelOrConcreteMomentResistingFramesWithInfilled, MethodToCalculateTEmpiric.Methode1Formule46) => GetEmp1(myOuvrage.Hn, myOuvrage.EquivalentStaticMethod.Ct),
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case3_SteelOrConcreteMomentResistingFramesWithInfilled, MethodToCalculateTEmpiric.Methode2Formule47) => GetEmp2(myOuvrage.Hn, l),
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case3_SteelOrConcreteMomentResistingFramesWithInfilled, MethodToCalculateTEmpiric.Methode3MinFormule) => Min(GetEmp1(myOuvrage.Hn, myOuvrage.EquivalentStaticMethod.Ct), GetEmp2(myOuvrage.Hn, l)),
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case4_PartiallyOrTotallyRCShearWalls, MethodToCalculateTEmpiric.Methode1Formule46) => GetEmp1(myOuvrage.Hn, myOuvrage.EquivalentStaticMethod.Ct),
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case4_PartiallyOrTotallyRCShearWalls, MethodToCalculateTEmpiric.Methode2Formule47) => GetEmp2(myOuvrage.Hn, l),
-                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case4_PartiallyOrTotallyRCShearWalls, MethodToCalculateTEmpiric.Methode3MinFormule) => Min(GetEmp1(myOuvrage.Hn, myOuvrage.EquivalentStaticMethod.Ct), GetEmp2(myOuvrage.Hn, l)),
-                (FormulatoCalculateTStatic.FormulaRayleighSimplified, _, _) => GetRayleigh(myOuvrage.EquivalentStaticMethod.Delta),
-                _ => throw new ArgumentOutOfRangeException(nameof(myOuvrage)),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case1_ConcreteMomentResistingFramesWithoutInFilled, _) => GetEmp1(myBuilding.Hn, myBuilding.EquivalentStaticMethod.Ct),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case2_SteelMomentResistingFramesWIthoutInFilled, _) => GetEmp1(myBuilding.Hn, myBuilding.EquivalentStaticMethod.Ct),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case3_SteelOrConcreteMomentResistingFramesWithInfilled, MethodToCalculateTEmpiric.Methode1Formule46) => GetEmp1(myBuilding.Hn, myBuilding.EquivalentStaticMethod.Ct),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case3_SteelOrConcreteMomentResistingFramesWithInfilled, MethodToCalculateTEmpiric.Methode2Formule47) => GetEmp2(myBuilding.Hn, l),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case3_SteelOrConcreteMomentResistingFramesWithInfilled, MethodToCalculateTEmpiric.Methode3MinFormule) => Min(GetEmp1(myBuilding.Hn, myBuilding.EquivalentStaticMethod.Ct), GetEmp2(myBuilding.Hn, l)),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case4_PartiallyOrTotallyRCShearWalls, MethodToCalculateTEmpiric.Methode1Formule46) => GetEmp1(myBuilding.Hn, myBuilding.EquivalentStaticMethod.Ct),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case4_PartiallyOrTotallyRCShearWalls, MethodToCalculateTEmpiric.Methode2Formule47) => GetEmp2(myBuilding.Hn, l),
+                (FormulatoCalculateTStatic.FormulaEmpiric, ResistingSystem.Case4_PartiallyOrTotallyRCShearWalls, MethodToCalculateTEmpiric.Methode3MinFormule) => Min(GetEmp1(myBuilding.Hn, myBuilding.EquivalentStaticMethod.Ct), GetEmp2(myBuilding.Hn, l)),
+                (FormulatoCalculateTStatic.FormulaRayleighSimplified, _, _) => GetRayleigh(myBuilding.EquivalentStaticMethod.Delta),
+                _ => throw new ArgumentOutOfRangeException(nameof(myBuilding)),
             };
         }
         /// <summary>
@@ -182,23 +181,24 @@ namespace RPA99AI.Library
             var criteria = (myOuvrage.Zone, myOuvrage.Importance, myOuvrage.Qualites[2].NonObserve, myOuvrage.Qualites[3].NonObserve);
             return criteria switch
             {
-                (Zone.ZoneI_LowSeismicity, _, false, false) => myOuvrage.Hn <= 65.0,
-                (Zone.ZoneIIa_ModerateSeismicity, _, false, false) => myOuvrage.Hn <= 65.0,
-                (Zone.ZoneIIb_ModerateSeismicity, _, false, false) => myOuvrage.Hn <= 30.0,
-                (Zone.ZoneIII_HighSeismicity, _, false, false) => myOuvrage.Hn <= 30.0,
-                (Zone.ZoneI_LowSeismicity, _, _, _) => true,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance, _, _) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance, _, _) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance, _, _) => myOuvrage.Hn <= 23.0,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance, _, _) => true,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance, _, _) => myOuvrage.Hn <= 08.0,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance, _, _) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance, _, _) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance, _, _) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIII_HighSeismicity, Importance.Group1A_ConstructionOfVitalImportance, _, _) => myOuvrage.Hn <= 08.0,
-                (Zone.ZoneIII_HighSeismicity, Importance.Group1B_ConstructionOfHighImportance, _, _) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIII_HighSeismicity, Importance.Group2_ConstructionsOfModerateImportance, _, _) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIII_HighSeismicity, Importance.Group3_ConstructionsOfLowImportance, _, _) => myOuvrage.Hn <= 17.0,
+                //**************Zone************,***********************Importance**********************,
+                (Zone.ZoneI_LowSeismicity       , _                                                     , false , false ) => myOuvrage.Hn <= 65.0,
+                (Zone.ZoneIIa_ModerateSeismicity, _                                                     , false , false ) => myOuvrage.Hn <= 65.0,
+                (Zone.ZoneIIb_ModerateSeismicity, _                                                     , false , false ) => myOuvrage.Hn <= 30.0,
+                (Zone.ZoneIII_HighSeismicity    , _                                                     , false , false ) => myOuvrage.Hn <= 30.0,
+                (Zone.ZoneI_LowSeismicity       , _                                                     , _     , _     ) => true,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance      , _     , _     ) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance       , _     , _     ) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance   , _     , _     ) => myOuvrage.Hn <= 23.0,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance        , _     , _     ) => true,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance      , _     , _     ) => myOuvrage.Hn <= 08.0,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance       , _     , _     ) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance   , _     , _     ) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance        , _     , _     ) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIII_HighSeismicity    , Importance.Group1A_ConstructionOfVitalImportance      , _     , _     ) => myOuvrage.Hn <= 08.0,
+                (Zone.ZoneIII_HighSeismicity    , Importance.Group1B_ConstructionOfHighImportance       , _     , _     ) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIII_HighSeismicity    , Importance.Group2_ConstructionsOfModerateImportance   , _     , _     ) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIII_HighSeismicity    , Importance.Group3_ConstructionsOfLowImportance        , _     , _     ) => myOuvrage.Hn <= 17.0,
                 _ => throw new ArgumentOutOfRangeException(nameof(myOuvrage)),
             };
         }

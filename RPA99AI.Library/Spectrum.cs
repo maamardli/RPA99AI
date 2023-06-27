@@ -36,10 +36,10 @@ namespace RPA99AI.Library
         {
             return t switch
             {
-                double _ when t >= 0.0 && t < t1 => 1.25 * a * (1.0 + (t / t1 * ((2.5 * eta * (q / r)) - 1.0))),
-                double _ when t >= t1 && t < t2 => 1.25 * a * 2.5 * eta * (q / r),
-                double _ when t >= t2 && t < 3.0 => 1.25 * a * 2.5 * eta * (q / r) * Pow(t2 / t, 2.0 / 3.0),
-                double _ when t >= 3.0 => 1.25 * a * 2.5 * eta * (q / r) * Pow(t2 / 3.0, 2.0 / 3.0) * Pow(3.0 / t, 5.0 / 3.0),
+                double _ when t >= 0.0 && t < t1  => 1.25 * a * (1.0 + (t / t1 * ((2.5 * eta * (q / r)) - 1.0))),
+                double _ when t >= t1  && t < t2  => 1.25 * a * 2.5 * eta * (q / r),
+                double _ when t >= t2  && t < 3.0 => 1.25 * a * 2.5 * eta * (q / r) * Pow(t2 / t, 2.0 / 3.0),
+                double _ when t >= 3.0            => 1.25 * a * 2.5 * eta * (q / r) * Pow(t2 / 3.0, 2.0 / 3.0) * Pow(3.0 / t, 5.0 / 3.0),
                 _ => throw new ArgumentOutOfRangeException(nameof(t)),
             };
         }
