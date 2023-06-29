@@ -1,4 +1,5 @@
 ﻿using static System.Math;
+
 namespace RPA99AI.Library
 {
     /// <summary>
@@ -39,6 +40,7 @@ namespace RPA99AI.Library
         /// Tx: the fundamental period of the structure in the direction X
         /// </summary>
         public double Tx => GetT(_building, _building.Lx);
+
         /// <summary>
         /// Ty: the fundamental period of the structure in the direction Y
         /// </summary>
@@ -48,6 +50,7 @@ namespace RPA99AI.Library
         /// Dx: Average dynamic amplification factor in the direction X
         /// </summary>
         public double Dx => GetD(_building.Eta, Tx, _building.T2);
+
         /// <summary>
         /// Dy: Average dynamic amplification factor in the direction Y
         /// </summary>
@@ -57,6 +60,7 @@ namespace RPA99AI.Library
         /// Vx: The total seismic load in the direction X
         /// </summary>
         public double Vx => GetV(_building.A, Dx, _building.Q, _building.W, _building.R);
+
         /// <summary>
         /// Vy: The total seismic load in the direction Y
         /// </summary>
@@ -74,8 +78,9 @@ namespace RPA99AI.Library
         /// <param name="ct">coefficient, function of the lateral force resisting system</param>
         /// <returns></returns>
         private static double GetEmp1(double hn, double ct) => ct * Pow(hn, 3.0 / 4.0);
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="hn"></param>
         /// <param name="l"></param>
@@ -119,8 +124,9 @@ namespace RPA99AI.Library
                 _ => throw new ArgumentOutOfRangeException(nameof(myBuilding)),
             };
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="eta"></param>
         /// <param name="t"></param>
@@ -136,7 +142,7 @@ namespace RPA99AI.Library
         };
 
         /// <summary>
-        /// The method to get the Total seismic load 
+        /// The method to get the Total seismic load
         /// </summary>
         /// <param name="a"></param>
         /// <param name="d"></param>
@@ -181,27 +187,27 @@ namespace RPA99AI.Library
             var criteria = (myOuvrage.Zone, myOuvrage.Importance, myOuvrage.Qualites[2].NonObserve, myOuvrage.Qualites[3].NonObserve);
             return criteria switch
             {
-                //**************Zone************,***********************Importance**********************,
-                (Zone.ZoneI_LowSeismicity       , _                                                     , false , false ) => myOuvrage.Hn <= 65.0,
-                (Zone.ZoneIIa_ModerateSeismicity, _                                                     , false , false ) => myOuvrage.Hn <= 65.0,
-                (Zone.ZoneIIb_ModerateSeismicity, _                                                     , false , false ) => myOuvrage.Hn <= 30.0,
-                (Zone.ZoneIII_HighSeismicity    , _                                                     , false , false ) => myOuvrage.Hn <= 30.0,
-                (Zone.ZoneI_LowSeismicity       , _                                                     , _     , _     ) => true,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance      , _     , _     ) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance       , _     , _     ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance   , _     , _     ) => myOuvrage.Hn <= 23.0,
-                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance        , _     , _     ) => true,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance      , _     , _     ) => myOuvrage.Hn <= 08.0,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance       , _     , _     ) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance   , _     , _     ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance        , _     , _     ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIII_HighSeismicity    , Importance.Group1A_ConstructionOfVitalImportance      , _     , _     ) => myOuvrage.Hn <= 08.0,
-                (Zone.ZoneIII_HighSeismicity    , Importance.Group1B_ConstructionOfHighImportance       , _     , _     ) => myOuvrage.Hn <= 10.0,
-                (Zone.ZoneIII_HighSeismicity    , Importance.Group2_ConstructionsOfModerateImportance   , _     , _     ) => myOuvrage.Hn <= 17.0,
-                (Zone.ZoneIII_HighSeismicity    , Importance.Group3_ConstructionsOfLowImportance        , _     , _     ) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneI_LowSeismicity, _, false, false) => myOuvrage.Hn <= 65.0,
+                (Zone.ZoneIIa_ModerateSeismicity, _, false, false) => myOuvrage.Hn <= 65.0,
+                (Zone.ZoneIIb_ModerateSeismicity, _, false, false) => myOuvrage.Hn <= 30.0,
+                (Zone.ZoneIII_HighSeismicity, _, false, false) => myOuvrage.Hn <= 30.0,
+                (Zone.ZoneI_LowSeismicity, _, _, _) => true,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance, _, _) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance, _, _) => myOuvrage.Hn <= 23.0,
+                (Zone.ZoneIIa_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance, _, _) => true,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance, _, _) => myOuvrage.Hn <= 08.0,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance, _, _) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIIb_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIII_HighSeismicity, Importance.Group1A_ConstructionOfVitalImportance, _, _) => myOuvrage.Hn <= 08.0,
+                (Zone.ZoneIII_HighSeismicity, Importance.Group1B_ConstructionOfHighImportance, _, _) => myOuvrage.Hn <= 10.0,
+                (Zone.ZoneIII_HighSeismicity, Importance.Group2_ConstructionsOfModerateImportance, _, _) => myOuvrage.Hn <= 17.0,
+                (Zone.ZoneIII_HighSeismicity, Importance.Group3_ConstructionsOfLowImportance, _, _) => myOuvrage.Hn <= 17.0,
                 _ => throw new ArgumentOutOfRangeException(nameof(myOuvrage)),
             };
         }
+
         #endregion Static Methodes
     }
 }

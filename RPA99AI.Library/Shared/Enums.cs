@@ -25,14 +25,14 @@ public enum FormulatoCalculateTStatic
 public enum Importance
 {
     /// <summary>
-    /// Group 1A Construction of vital importance: 
-    /// Vital constructions should stay operational after major earthquake for the needs of the  
+    /// Group 1A Construction of vital importance:
+    /// Vital constructions should stay operational after major earthquake for the needs of the
     /// survival of the region, the public safety and the national defense
     /// </summary>
     Group1A_ConstructionOfVitalImportance,
 
     /// <summary>
-    /// Groupe 1B Construction of high importance: 
+    /// Groupe 1B Construction of high importance:
     /// Constructions housing frequently large groups of persons
     /// </summary>
     Group1B_ConstructionOfHighImportance,
@@ -42,16 +42,15 @@ public enum Importance
     /// Constructions non classified in the other groups 1A, 1B or 3
     /// </summary>
     Group2_ConstructionsOfModerateImportance,
-    
+
     /// <summary>
     /// Groupe 3 Constructions of low importance:
-    /// - industrial or agricultural buildings sheltering low value goods 
-    /// - buildings with limited risk for people 
+    /// - industrial or agricultural buildings sheltering low value goods
+    /// - buildings with limited risk for people
     /// - temporary constructions
     /// </summary>
     Group3_ConstructionsOfLowImportance
 }
-
 
 public enum Material
 {
@@ -96,7 +95,7 @@ public enum QualityCriteria
 }
 
 /// <summary>
-/// 3.3.1 Categories and classification criteria: 
+/// 3.3.1 Categories and classification criteria:
 /// The sites are classified into four(04) categories according to the mechanical properties of the constituting soils.
 /// </summary>
 public enum Site
@@ -109,19 +108,18 @@ public enum Site
 
     /// <summary>
     /// Category S2 (firm site):
-    /// Very dense gravel or sand and/or over consolidated clay deposits with a thickness of 10 to 20 meters and Vs ≥ 400 m/s from a depth of 10 meters. 
+    /// Very dense gravel or sand and/or over consolidated clay deposits with a thickness of 10 to 20 meters and Vs ≥ 400 m/s from a depth of 10 meters.
     /// </summary>
     S2FirmSite,
 
     /// <summary>
-    /// Category S3 (soft site): Thick deposits of moderately dense gravel and sand or moderately stiff clay with Vs ≥200 m/s from a depth of 10 meters. 
+    /// Category S3 (soft site): Thick deposits of moderately dense gravel and sand or moderately stiff clay with Vs ≥200 m/s from a depth of 10 meters.
     /// </summary>
     S3SoftSite,
 
-
     /// <summary>
-    /// Category S4 (very soft site): 
-    /// Loose sands deposits with or without soft clay with Vs < 200 m/s within the 20 first meters. 
+    /// Category S4 (very soft site):
+    /// Loose sands deposits with or without soft clay with Vs < 200 m/s within the 20 first meters.
     /// Soft to moderately stiff clay with Vs < 200 m/s within the 20 first meters.
     /// </summary>
     S4VerySoftSite
@@ -132,7 +130,7 @@ public enum Site
 /// The aim of the classification of the structural systems gives rise in these rules and design
 /// methods to the assignment for each category of this classification of a numerical value of the
 /// behavior coefficient R.
-/// A: Reinforced concrete structures 
+/// A: Reinforced concrete structures
 /// B: Steel
 /// C: Masonry
 /// D: Other systems
@@ -171,7 +169,7 @@ public enum ResistingSystem
 }
 
 /// <summary>
-/// Building type 
+/// Building type
 /// </summary>
 public enum BuildingType
 {
@@ -248,7 +246,7 @@ public enum Wilaya
 
 /// <summary>
 /// 3.1. Classification of the seismic zones
-/// The national territory is subdivided into five (05) zones of increasing sismicity, 
+/// The national territory is subdivided into five (05) zones of increasing sismicity,
 /// defined on the seismic zoning map and the attached table which details this repartition at the wilaya and commune levels
 /// </summary>
 public enum Zone

@@ -40,7 +40,7 @@ namespace RPA99AI.Library
         /// Ly: is the dimension of the building measured at its basis in the direction y
         /// </summary>
         public double Ly { get; set; } = 1.0;
-        
+
         /// <summary>
         /// Hn: The height of the building
         /// </summary>
@@ -63,11 +63,13 @@ namespace RPA99AI.Library
 
         public DeclarationOfTheZone DeclarationduZone { get; set; } = DeclarationOfTheZone.ByZone;
         public Wilaya Wilaya { get; set; } = Wilaya.AinDeflaA;
+
         public Zone Zone
         {
-            get => BuildingHelpers.GetZone(this);
+            get => GetZone(this);
             set => _zone = value;
         }
+
         public Site Site { get; set; } = Site.S1RockySite;
         public Importance Importance { get; set; } = Importance.Group1A_ConstructionOfVitalImportance;
         public Material Materiau { get; set; } = Material.SteelHeavy;
@@ -76,6 +78,7 @@ namespace RPA99AI.Library
         public List<Quality> Qualites { get; }
 
         public bool IsACustomValue { get; set; }
+
         /// <summary>
         /// A: zone acceleration coefficient
         /// </summary>
@@ -97,6 +100,7 @@ namespace RPA99AI.Library
         }
 
         public bool IsQCustomValue { get; set; }
+
         /// <summary>
         /// Q: Quality factor
         /// </summary>
@@ -108,6 +112,7 @@ namespace RPA99AI.Library
         }
 
         public bool IsRCustomValue { get; set; }
+
         /// <summary>
         /// R: global behavior coefficient of the structure
         /// </summary>
@@ -118,6 +123,7 @@ namespace RPA99AI.Library
         }
 
         public bool IsT1T2CustomValue { get; set; }
+
         /// <summary>
         /// T1: Characteristic periods associated with the site category
         /// </summary>
@@ -126,6 +132,7 @@ namespace RPA99AI.Library
             get => IsT1T2CustomValue ? _t1 : GetT1(Site);
             set => _t1 = value;
         }
+
         /// <summary>
         /// T2: Characteristic periods associated with the site category
         /// </summary>
@@ -136,22 +143,19 @@ namespace RPA99AI.Library
         }
 
         public bool IsXiCustomValue { get; set; }
+
         /// <summary>
-        /// ξ: Percentage of critical damping 
+        /// ξ: Percentage of critical damping
         /// </summary>
         public double Xi
         {
-            get => IsXiCustomValue ? _xi : BuildingHelpers.GetXi(Materiau);
+            get => IsXiCustomValue ? _xi : GetXi(Materiau);
             set => _xi = value;
         }
 
         /// <summary>
         /// η: Factor of correction of damping (when the damping is different of 5%)
         /// </summary>
-        public double Eta => BuildingHelpers.GetEta(Xi);
-
-        #region static Methodes
-
-        #endregion
+        public double Eta => GetEta(Xi);
     }
 }

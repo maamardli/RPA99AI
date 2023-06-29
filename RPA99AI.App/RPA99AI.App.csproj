@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>RPA99AI.App.Program</StartupObject>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
   </PropertyGroup>
 
   <ItemGroup>

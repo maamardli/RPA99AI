@@ -20,7 +20,7 @@ namespace RPA99AI.App.Forms
             DoTheWork(this);
         }
 
-        public sealed override string Text
+        public override sealed string Text
         {
             get => base.Text;
             set => base.Text = value;

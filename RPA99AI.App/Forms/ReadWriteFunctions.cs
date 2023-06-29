@@ -87,6 +87,7 @@ namespace RPA99AI.App.Forms
         }
 
         #region FrmMain
+
         internal static void FrmMainInitializeComponentChart(FrmMain frmMain)
         {
             frmMain.ChartSpectre.AntiAliasing = AntiAliasingStyles.None;
@@ -478,9 +479,11 @@ namespace RPA99AI.App.Forms
 
             Settings.Default.Save();
         }
-        #endregion
+
+        #endregion FrmMain
 
         #region FrmOptions
+
         internal static void FrmOptionsLoad(FrmOptions frmOptions)
         {
             frmOptions.CmbDeclerationZone.SelectedIndex = Settings.Default.FrmOptions_CmbDeclarationduZone_SelectedIndex;
@@ -531,9 +534,11 @@ namespace RPA99AI.App.Forms
 
             Settings.Default.FrmOptions_ChkIsShowHint_Checked = frmOptions.ChkShowHint.Checked;
         }
-        #endregion
+
+        #endregion FrmOptions
 
         #region FrmQualities
+
         internal static void FrmQualitiesReadFromSettings(FrmQualities frmQualities)
         {
             for (var i = 0; i < frmQualities.ChkLstQualite.Items.Count; i++)
@@ -549,6 +554,7 @@ namespace RPA99AI.App.Forms
                 Settings.Default[$"FrmQualite_ChkLstQualite_Item{i}"] = frmQualities.ChkLstQualite.GetItemChecked(i);
             }
         }
-        #endregion
+
+        #endregion FrmQualities
     }
 }

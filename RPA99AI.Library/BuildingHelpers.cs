@@ -64,49 +64,51 @@ internal static class BuildingHelpers
 
     internal static readonly Dictionary<StructuralSystems, double> RValues = new()
     {
-        {StructuralSystems.A1A, 5.00},
-        {StructuralSystems.A1B, 3.50},
-        {StructuralSystems.A2, 3.50},
-        {StructuralSystems.A3, 3.50},
-        {StructuralSystems.A4A, 5.00},
-        {StructuralSystems.A4B, 4.00},
-        {StructuralSystems.A5, 2.00},
-        {StructuralSystems.A6, 2.00},
-        {StructuralSystems.B7, 6.00},
-        {StructuralSystems.B8, 4.00},
-        {StructuralSystems.B9A, 4.00},
-        {StructuralSystems.B9B, 3.00},
-        {StructuralSystems.B10A, 5.00},
-        {StructuralSystems.B10B, 4.00},
-        {StructuralSystems.B11, 2.00},
-        {StructuralSystems.C12, 2.50},
-        {StructuralSystems.D13, 2.00},
-        {StructuralSystems.D14, 3.00},
-        {StructuralSystems.D15, 3.50},
-        {StructuralSystems.D16, 4.00},
-        {StructuralSystems.D17, 2.00},
+        {StructuralSystems.A1A  , 5.00},
+        {StructuralSystems.A1B  , 3.50},
+        {StructuralSystems.A2   , 3.50},
+        {StructuralSystems.A3   , 3.50},
+        {StructuralSystems.A4A  , 5.00},
+        {StructuralSystems.A4B  , 4.00},
+        {StructuralSystems.A5   , 2.00},
+        {StructuralSystems.A6   , 2.00},
+        {StructuralSystems.B7   , 6.00},
+        {StructuralSystems.B8   , 4.00},
+        {StructuralSystems.B9A  , 4.00},
+        {StructuralSystems.B9B  , 3.00},
+        {StructuralSystems.B10A , 5.00},
+        {StructuralSystems.B10B , 4.00},
+        {StructuralSystems.B11  , 2.00},
+        {StructuralSystems.C12  , 2.50},
+        {StructuralSystems.D13  , 2.00},
+        {StructuralSystems.D14  , 3.00},
+        {StructuralSystems.D15  , 3.50},
+        {StructuralSystems.D16  , 4.00},
+        {StructuralSystems.D17  , 2.00},
     };
-    
+
     internal static readonly Dictionary<(Zone, Importance), double> AValues = new()
     {
         {(Zone.ZoneI_LowSeismicity       , Importance.Group1A_ConstructionOfVitalImportance   ), 0.15},
         {(Zone.ZoneI_LowSeismicity       , Importance.Group1B_ConstructionOfHighImportance    ), 0.12},
         {(Zone.ZoneI_LowSeismicity       , Importance.Group2_ConstructionsOfModerateImportance), 0.10},
         {(Zone.ZoneI_LowSeismicity       , Importance.Group3_ConstructionsOfLowImportance     ), 0.07},
+
         {(Zone.ZoneIIa_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance   ), 0.25},
         {(Zone.ZoneIIa_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance    ), 0.20},
         {(Zone.ZoneIIa_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance), 0.15},
         {(Zone.ZoneIIa_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance     ), 0.10},
+
         {(Zone.ZoneIIb_ModerateSeismicity, Importance.Group1A_ConstructionOfVitalImportance   ), 0.30},
         {(Zone.ZoneIIb_ModerateSeismicity, Importance.Group1B_ConstructionOfHighImportance    ), 0.25},
         {(Zone.ZoneIIb_ModerateSeismicity, Importance.Group2_ConstructionsOfModerateImportance), 0.20},
         {(Zone.ZoneIIb_ModerateSeismicity, Importance.Group3_ConstructionsOfLowImportance     ), 0.14},
+
         {(Zone.ZoneIII_HighSeismicity    , Importance.Group1A_ConstructionOfVitalImportance   ), 0.40},
         {(Zone.ZoneIII_HighSeismicity    , Importance.Group1B_ConstructionOfHighImportance    ), 0.30},
         {(Zone.ZoneIII_HighSeismicity    , Importance.Group2_ConstructionsOfModerateImportance), 0.25},
         {(Zone.ZoneIII_HighSeismicity    , Importance.Group3_ConstructionsOfLowImportance     ), 0.18}
     };
-
 
     internal static readonly Dictionary<BuildingType, double> BetaValues = new()
     {
@@ -118,23 +120,22 @@ internal static class BuildingHelpers
             {BuildingType.Case5_OtherBuildings                                      , 0.60}
         };
 
-
     /// <summary>
     /// T2: characteristic period, associated to the category of the site
     /// </summary>
     internal static readonly Dictionary<Site, double> T2Values = new()
     {
-            {Site.S1RockySite, 0.30},
-            {Site.S2FirmSite, 0.40},
-            {Site.S3SoftSite, 0.50},
-            {Site.S4VerySoftSite, 0.70},
-        };
+        {Site.S1RockySite   , 0.30},
+        {Site.S2FirmSite    , 0.40},
+        {Site.S3SoftSite    , 0.50},
+        {Site.S4VerySoftSite, 0.70},
+    };
 
     internal static readonly Dictionary<Site, double> T1Values = new()
     {
-            {Site.S1RockySite, 0.15},
-            {Site.S2FirmSite, 0.15},
-            {Site.S3SoftSite, 0.15},
+            {Site.S1RockySite   , 0.15},
+            {Site.S2FirmSite    , 0.15},
+            {Site.S3SoftSite    , 0.15},
             {Site.S4VerySoftSite, 0.15},
         };
 
@@ -142,11 +143,10 @@ internal static class BuildingHelpers
     {
             { Material.ConcreteLight, 6.00 },
             { Material.ConcreteHeavy, 7.00 },
-            { Material.SteelLight, 4.00 },
-            { Material.SteelHeavy, 5.00 },
-            { Material.ShearWalls, 10.00 }
+            { Material.SteelLight   , 4.00 },
+            { Material.SteelHeavy   , 5.00 },
+            { Material.ShearWalls   , 10.00}
         };
-
 
     internal static double GetA(Building ouvrage)
     {
@@ -160,38 +160,17 @@ internal static class BuildingHelpers
     /// <param name="typesOuvrages"> Type of the building</param>
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
-    internal static double GetBeta(BuildingType typesOuvrages)
-    {
-        if (BuildingHelpers.BetaValues.TryGetValue(typesOuvrages, out var beta))
-        {
-            return beta;
-        }
-
-        throw new NotImplementedException();
-    }
+    internal static double GetBeta(BuildingType typesOuvrages) => BetaValues.TryGetValue(typesOuvrages, out var beta) ? beta : throw new NotImplementedException();
 
     internal static double GetEta(double xi) => Math.Sqrt(7.0 / (xi + 2.0));
 
-    internal static double GetR(StructuralSystems systemeContreventement)
-    {
-        return RValues.TryGetValue(systemeContreventement, out double r) ? r : throw new NotImplementedException();
-    }
+    internal static double GetR(StructuralSystems systemeContreventement) => RValues.TryGetValue(systemeContreventement, out double r) ? r : throw new NotImplementedException();
 
-    internal static double GetT1(Site site)
-    {
-        return T1Values.TryGetValue(site, out double value) ? value : throw new NotImplementedException();
-    }
+    internal static double GetT1(Site site) => T1Values.TryGetValue(site, out double value) ? value : throw new NotImplementedException();
 
-    internal static double GetT2(Site site)
-    {
-        return T2Values.TryGetValue(site, out double value) ? value : throw new NotImplementedException();
-    }
+    internal static double GetT2(Site site) => T2Values.TryGetValue(site, out double value) ? value : throw new NotImplementedException();
 
-    internal static double GetXi(Material materiau)
-    {
-        return XiValues.TryGetValue(materiau, out double value) ? value : throw new NotImplementedException();
-    }
-
+    internal static double GetXi(Material materiau) => XiValues.TryGetValue(materiau, out double value) ? value : throw new NotImplementedException();
 
     internal static Zone GetZone(Building ouvrage)
     {
@@ -202,4 +181,16 @@ internal static class BuildingHelpers
             _ => throw new NotImplementedException(),
         };
     }
+
+    internal static double GetQualityValue(QualityCriteria qualitieCriterias) => QualityValues.TryGetValue(qualitieCriterias, out double value) ? value : throw new NotImplementedException();
+
+    internal static readonly Dictionary<QualityCriteria, double> QualityValues = new()
+    {
+        {QualityCriteria.Q1MinimalConditionsOnBracingLines, 0.05},
+        {QualityCriteria.Q2RedundancyInPlan, 0.05},
+        {QualityCriteria.Q3RegularityInPlan, 0.05},
+        {QualityCriteria.Q4RegularityInElevation, 0.05},
+        {QualityCriteria.Q5ControlOfMaterialQuality, 0.05},
+        {QualityCriteria.Q6ControlOfConstructionQuality, 0.10}
+    };
 }

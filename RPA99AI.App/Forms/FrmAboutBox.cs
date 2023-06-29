@@ -2,7 +2,7 @@
 
 namespace RPA99AI.App.Forms
 {
-    partial class FrmAboutBox : Form
+    internal partial class FrmAboutBox : Form
     {
         public FrmAboutBox()
         {
@@ -93,6 +93,7 @@ namespace RPA99AI.App.Forms
                 return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
         }
-        #endregion
+
+        #endregion Assembly Attribute Accessors
     }
 }
