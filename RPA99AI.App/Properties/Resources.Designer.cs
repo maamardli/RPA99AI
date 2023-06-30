@@ -89,7 +89,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Type d&apos;ouvrage.
         /// </summary>
         internal static string FrmMain_Type_d_ouvrage {
             get {
@@ -98,7 +98,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to A = .
         /// </summary>
         internal static string FrmMain_Value_A_Equals {
             get {
@@ -116,7 +116,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ct = .
         /// </summary>
         internal static string FrmMain_Value_Ct_Equals {
             get {
@@ -125,7 +125,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Dx = .
         /// </summary>
         internal static string FrmMain_Value_Dx_Equals {
             get {
@@ -134,7 +134,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Dy = .
         /// </summary>
         internal static string FrmMain_Value_Dy_Equals {
             get {
@@ -152,7 +152,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Q = .
         /// </summary>
         internal static string FrmMain_Value_Q_Equals {
             get {
@@ -161,7 +161,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to R = .
         /// </summary>
         internal static string FrmMain_Value_R_Equals {
             get {
@@ -170,7 +170,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to T1 = .
         /// </summary>
         internal static string FrmMain_Value_T1_Equals {
             get {
@@ -179,7 +179,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to T2 = .
         /// </summary>
         internal static string FrmMain_Value_T2_Equals {
             get {
@@ -188,7 +188,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Tx = .
         /// </summary>
         internal static string FrmMain_Value_Tx_Equals {
             get {
@@ -197,7 +197,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Ty = .
         /// </summary>
         internal static string FrmMain_Value_Ty_Equals {
             get {
@@ -206,7 +206,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Vx = .
         /// </summary>
         internal static string FrmMain_Value_Vx_Equals {
             get {
@@ -215,7 +215,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to 0.8 * Vx = .
         /// </summary>
         internal static string FrmMain_Value_Vx08_Equals {
             get {
@@ -224,7 +224,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Vy = .
         /// </summary>
         internal static string FrmMain_Value_Vy_Equals {
             get {
@@ -233,7 +233,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to 0.8 * Vy =.
         /// </summary>
         internal static string FrmMain_Value_Vy08_Equals {
             get {
@@ -242,7 +242,7 @@ namespace RPA99AI.App.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to W = .
         /// </summary>
         internal static string FrmMain_Value_W_Rquals {
             get {

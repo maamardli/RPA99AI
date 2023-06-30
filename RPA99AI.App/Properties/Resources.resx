@@ -128,58 +128,58 @@
     <value />
   </data>
   <data name="FrmMain_Type_d_ouvrage" xml:space="preserve">
-    <value />
+    <value>Type d'ouvrage</value>
   </data>
   <data name="FrmMain_Value_A_Equals" xml:space="preserve">
-    <value />
+    <value>A = </value>
   </data>
   <data name="FrmMain_Value_Beta_Equals" xml:space="preserve">
     <value />
   </data>
   <data name="FrmMain_Value_Ct_Equals" xml:space="preserve">
-    <value />
+    <value>Ct = </value>
   </data>
   <data name="FrmMain_Value_Dx_Equals" xml:space="preserve">
-    <value />
+    <value>Dx = </value>
   </data>
   <data name="FrmMain_Value_Dy_Equals" xml:space="preserve">
-    <value />
+    <value>Dy = </value>
   </data>
   <data name="FrmMain_Value_Eta_Equals" xml:space="preserve">
     <value />
   </data>
   <data name="FrmMain_Value_Q_Equals" xml:space="preserve">
-    <value />
+    <value>Q = </value>
   </data>
   <data name="FrmMain_Value_R_Equals" xml:space="preserve">
-    <value />
+    <value>R = </value>
   </data>
   <data name="FrmMain_Value_T1_Equals" xml:space="preserve">
-    <value />
+    <value>T1 = </value>
   </data>
   <data name="FrmMain_Value_T2_Equals" xml:space="preserve">
-    <value />
+    <value>T2 = </value>
   </data>
   <data name="FrmMain_Value_Tx_Equals" xml:space="preserve">
-    <value />
+    <value>Tx = </value>
   </data>
   <data name="FrmMain_Value_Ty_Equals" xml:space="preserve">
-    <value />
+    <value>Ty = </value>
   </data>
   <data name="FrmMain_Value_Vx08_Equals" xml:space="preserve">
-    <value />
+    <value>0.8 * Vx = </value>
   </data>
   <data name="FrmMain_Value_Vx_Equals" xml:space="preserve">
-    <value />
+    <value>Vx = </value>
   </data>
   <data name="FrmMain_Value_Vy08_Equals" xml:space="preserve">
-    <value />
+    <value>0.8 * Vy =</value>
   </data>
   <data name="FrmMain_Value_Vy_Equals" xml:space="preserve">
-    <value />
+    <value>Vy = </value>
   </data>
   <data name="FrmMain_Value_W_Rquals" xml:space="preserve">
-    <value />
+    <value>W = </value>
   </data>
   <data name="FrmMain_Value_Xi_Equals" xml:space="preserve">
     <value />
